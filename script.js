@@ -22,13 +22,13 @@ window.addEventListener('load', revealOnScroll);
 
 // ✅ EmailJS Integration
 (function () {
-  emailjs.init("uooLZP59-_HhplJ_O"); // Your public key
+  emailjs.init("GhH9BFqEYGu-2tQ-t"); // Your public key
 })();
 
 document.getElementById("contact-form").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  emailjs.sendForm("service_9b0dk9f", "template_f9t6123", this)
+  emailjs.sendForm("service_l4ifv6n", "template_4t6qeom", this)
     .then(function () {
       alert("✅ Message sent successfully!");
     }, function (error) {

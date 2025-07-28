@@ -1,0 +1,39 @@
+// --- script.js ---
+
+// Scroll reveal effect
+const reveals = document.querySelectorAll('.reveal');
+
+function revealOnScroll() {
+  for (let i = 0; i < reveals.length; i++) {
+    const windowHeight = window.innerHeight;
+    const revealTop = reveals[i].getBoundingClientRect().top;
+    const revealPoint = 100;
+
+    if (revealTop < windowHeight - revealPoint) {
+      reveals[i].classList.add('active');
+    } else {
+      reveals[i].classList.remove('active');
+    }
+  }
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+
+// ✅ EmailJS Integration
+(function () {
+  emailjs.init("uooLZP59-_HhplJ_O"); // Your public key
+})();
+
+document.getElementById("contact-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  emailjs.sendForm("service_9b0dk9f", "template_f9t6123", this)
+    .then(function () {
+      alert("✅ Message sent successfully!");
+    }, function (error) {
+      alert("❌ Failed to send message: " + JSON.stringify(error));
+    });
+
+  this.reset();
+});
